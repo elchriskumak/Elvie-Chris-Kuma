@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Loans Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .calculator, .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quick Loans Service</h1>
+        <p>Get the money you need quickly with our flexible loan options.</p >
+        
+        <div class="calculator">
+            <h2>Loan Calculator</h2>
+            <label for="loanAmount">Loan Amount ($):</label>
+            <input type="number" id="loanAmount" min="1" required>
+            
+            <label for="loanDuration">Loan Duration:</label>
+            <select id="loanDuration" required>
+                <option value="">Select duration</option>
+                <option value="1">1 day</option>
+                <option value="2">2 days</option>
+                <option value="3">3 days</option>
+                <option value="7">1 week</option>
+                <option value="14">2 weeks</option>
+                <option value="30">1 month</option>
+            </select>
+            
+            <button onclick="calculateLoan()">Calculate</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Loan Application</h2>
+            <form id="loanForm">
+                <h3>Borrower Information</h3>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" required>
+                
+                <label for="room">Room Number:</label>
+                <input type="text" id="room" required>
+                
+                <h3>Lender Information</h3>
+                <label for="lenderName">Lender's Full Name:</label>
+                <input type="text" id="lenderName" required>
+                
+                <label for="lenderEmail">Lender's Email:</label>
+                <input type="email" id="lenderEmail" required>
+                
+                <label for="lenderPhone">Lender's Phone Number:</label>
+                <input type="tel" id="lenderPhone" required>
+                
+                <label for="lenderRoom">Lender's Room Number:</label>
+                <input type="text" id="lenderRoom" required>
+                
+                <label for="loanAmountForm">Loan Amount ($):</label>
+                <input type="number" id="loanAmountForm" min="1" required>
+                
+                <label for="loanDurationForm">Loan Duration:</label>
+                <select id="loanDurationForm" required>
+                    <option value="">Select duration</option>
+                    <option value="1">1 day</option>
+                    <option value="2">2 days</option>
+                    <option value="3">3 days</option>
+                    <option value="7">1 week</option>
+                    <option value="14">2 weeks</option>
+                    <option value="30">1 month</option>
+                </select>
+                
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+        
+        <div class="terms">
+            <h2>Loan Terms</h2>
+            <table>
+                <tr>
+                    <th>Loan Amount</th>
+                    <th>Duration</th>
+                    <th>Interest Rate</th>
+                </tr>
+                <tr>
+                    <td rowspan="6">≤ $250</td>
+                    <td>1-2 days</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>3 days</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>1 week</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>2 weeks</td>
+                    <td>30%</td>
+                </tr>
+                <tr>
+                    <td>1 month</td>
+                    <td>40%</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><em>No collateral required</em></td>
+                </tr>
+                <tr>
+                    <td rowspan="6">> $250</td>
+                    <td>1 day</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>2 days</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td>1 week</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>2 weeks</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>1 month</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><em>No collateral required</em></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Loan calculation function
+        function calculateLoan() {
+            const amount = parseFloat(document.getElementById('loanAmount').value);
+            const duration = parseInt(document.getElementById('loanDuration').value);
+            
+            if (isNaN(amount) || isNaN(duration)) {
+                alert('Please enter valid loan amount and duration');
+                return;
+            }
+            
+            let interestRate = 0;
+            
+            if (amount <= 250) {
+                if (duration <= 2) interestRate = 0;
+                else if (duration === 3) interestRate = 10;
+                else if (duration === 7) interestRate = 20;
+                else if (duration === 14) interestRate = 30;
+                else if (duration === 30) interestRate = 40;
+            } else {
+                if (duration === 1) interestRate = 0;
+                else if (duration === 2) interestRate = 5;
+                else if (duration === 7) interestRate = 10;
+                else if (duration === 14) interestRate = 15;
+                else if (duration === 30) interestRate = 25;
+            }
+            
+            const interest = (amount * interestRate) / 100;
+            const total = amount + interest;
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <h3>Loan Summary</h3>
+                <p><strong>Loan Amount:</strong> $${amount.toFixed(2)}</p >
+                <p><strong>Duration:</strong> ${getDurationText(duration)}</p >
+                <p><strong>Interest Rate:</strong> ${interestRate}%</p >
+                <p><strong>Interest Amount:</strong> $${interest.toFixed(2)}</p >
+                <p><strong>Total Repayment:</strong> $${total.toFixed(2)}</p >
+            `;
+        }
+        
+        // Helper function to convert days to text
+        function getDurationText(days) {
+            switch(days) {
+                case 1: return '1 day';
+                case 2: return '2 days';
+                case 3: return '3 days';
+                case 7: return '1 week';
+                case 14: return '2 weeks';
+                case 30: return '1 month';
+                default: return `${days} days`;
+            }
+        }
+        
+        // Form submission handler
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const borrower = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                room: document.getElementById('room').value
+            };
+            
+            const lender = {
+                name: document.getElementById('lenderName').value,
+                email: document.getElementById('lenderEmail').value,
+                phone: document.getElementById('lenderPhone').value,
+                room: document.getElementById('lenderRoom').value
+            };
+            
+            const loanAmount = parseFloat(document.getElementById('loanAmountForm').value);
+            const loanDuration = parseInt(document.getElementById('loanDurationForm').value);
+            
+            // Calculate loan details
+            let interestRate = 0;
+            
+            if (loanAmount <= 250) {
+                if (loanDuration <= 2) interestRate = 0;
+                else if (loanDuration === 3) interestRate = 10;
+                else if (loanDuration === 7) interestRate = 20;
+                else if (loanDuration === 14) interestRate = 30;
+                else if (loanDuration === 30) interestRate = 40;
+            } else {
+                if (loanDuration === 1) interestRate = 0;
+                else if (loanDuration === 2) interestRate = 5;
+                else if (loanDuration === 7) interestRate = 10;
+                else if (loanDuration === 14) interestRate = 15;
+                else if (loanDuration === 30) interestRate = 25;
+            }
+            
+            const interest = (loanAmount * interestRate) / 100;
+            const total = loanAmount + interest;
+            
+            // Display confirmation (in a real app, you would send this to a server)
+            alert(`Loan application submitted successfully!\n\n` +
+                  `Borrower: ${borrower.name}\n` +
+                  `Loan Amount: $${loanAmount.toFixed(2)}\n` +
+                  `Duration: ${getDurationText(loanDuration)}\n` +
+                  `Interest Rate: ${interestRate}%\n` +
+                  `Total Repayment: $${total.toFixed(2)}\n\n` +
+                  `A copy has been sent to ${lender.email}`);
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
